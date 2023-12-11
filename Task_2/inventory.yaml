@@ -1,0 +1,8 @@
+all:
+  hosts:
+    name_local_server:
+      ansible_port: "10022"
+      ansible_host: "127.0.0.1"
+      ansible_sudo_pass: "1234"
+      ansible_user: "root"
+      ansible_password: "1234"

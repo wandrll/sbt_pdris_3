@@ -1,0 +1,21 @@
+- name: mkdir
+  file:
+    path: "~/application/"
+    state: directory
+    mode: 0777
+    recurse: yes
+
+- name: clone
+  git:
+    repo: "https://github.com/wandrll/sbt_pdris_2.git"
+    dest: "~/application/"
+    version: task
+    clone: yes
+    update: yes
+    force: yes
+
+
+- name: run service
+  command:
+    cmd: "./task.sh"
+    chdir: "~/application/"

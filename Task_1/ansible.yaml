@@ -1,0 +1,23 @@
+- name: start monitoring
+  hosts: all
+
+  tasks:
+    - name: mkdir
+      file:
+        path: "./monitoring"
+        state: directory
+        mode: 0777
+        recurse: yes
+
+    - name: git clone
+      git:
+        repo: "https://github.com/wandrll/sbt_pdris_1.git"
+        dest: "./monitoring"
+        version: firstTask
+        clone: yes
+        update: yes
+        force: yes
+
+    - name: run service
+      ansible.builtin.shell:
+        cmd: chmod +rx ./monitoring/main.sh & ./monitoring/main.sh START 
